@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>胶学</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 设置全局字体为 Inter，如果系统没有则使用 sans-serif */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* 浅灰色背景，与头像风格呼应 */
+            color: #333; /* 深灰色文字 */
+        }
+        /* 自定义一些 Tailwind 无法直接实现的样式，例如头像的边框 */
+        .avatar-border {
+            border: 2px solid #555; /* 深灰色边框 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+        }
+        /* 视频容器的响应式处理 - 此处不再用于嵌入视频，但保留防止样式冲突 */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem; /* 圆角 */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* 简单的加载动画 - 此处不再需要，但保留样式定义 */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div class="container mx-auto px-4 py-8 flex-grow">
+        <!-- 网站头部 -->
+        <header class="flex flex-col items-center justify-center py-8 bg-white rounded-xl shadow-md mb-8">
+            <!-- 头像 -->
+            <img 
+                src="http://googleusercontent.com/file_content/0" 
+                alt="胶学头像" 
+                class="w-32 h-32 rounded-full object-cover mb-4 avatar-border"
+                onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e0e0/ffffff?text=Avatar';"
+            >
+            <!-- 网站名称 -->
+            <h1 class="text-5xl font-bold text-gray-800 tracking-tight">胶学</h1>
+            <!-- 更新后的介绍词 -->
+            <p class="text-lg text-gray-600 mt-2">终身学习，学以致用，拥抱幸福。</p>
+        </header>
+
+        <!-- Bilibili 个人主页链接区域 -->
+        <section class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-200 pb-3">Bilibili 视频主页</h2>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+                点击下方按钮，即可跳转到 "胶学" UP主在 Bilibili 的个人主页，观看更多精彩视频内容！
+            </p>
+            <a href="https://space.bilibili.com/1078480983?spm_id_from=333.788.upinfo.head.click" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="inline-flex items-center bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-75">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.5 14.5v-9l6 4.5-6 4.5z"></path></svg>
+                前往 Bilibili 胶学主页
+            </a>
+        </section>
+
+        <!-- PDF 文件下载区域 -->
+        <section class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-200 pb-3">学习资料下载</h2>
+            <p class="text-gray-700 mb-4">以下是配套的学习资料，点击即可下载：</p>
+            <ul class="space-y-4">
+                <li class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-3a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                    <a href="https://resource-tx-cdn.xiaoeeye.com/appmprxxtlw1092/file/b_u_clvs7frjop0v4ep5316g/zzrrfilqdltsm7.pdf?download_name=%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD%201%20%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%26%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-blue-600 hover:underline font-medium text-lg">
+                       新概念英语 1 课堂笔记&课后练习.pdf
+                    </a>
+                </li>
+                <li class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-3a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                    <a href="https://resource-tx-cdn.xiaoeeye.com/appmprxxtlw1092/file/b_u_clvs7frjop0v4ep5316g/so8faglr6a97a6.pdf?download_name=%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD%202%20%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-blue-600 hover:underline font-medium text-lg">
+                       新概念英语 2 课堂笔记.pdf
+                    </a>
+                </li>
+                <li class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-3a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                    <a href="https://resource-tx-cdn.xiaoeeye.com/appmprxxtlw1092/file/b_u_clvs7frjop0v4ep5316g/jrmkfwlsy6juan.pdf?download_name=%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD%203%20%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0L01-L40.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-blue-600 hover:underline font-medium text-lg">
+                       新概念英语 3 课堂笔记L01-L40.pdf
+                    </a>
+                </li>
+                <li class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-3a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                    <a href="https://resource-tx-cdn.xiaoeeye.com/appmprxxtlw1092/file/b_u_clvs7frjop0v4ep5316g/9f0op0lqcganwi.pdf?download_name=%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD2%20%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-blue-600 hover:underline font-medium text-lg">
+                       新概念英语 2 课后练习.pdf
+                    </a>
+                </li>
+                <li class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm hover:bg-gray-200 transition duration-300">
+                    <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1-3a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                    <a href="https://resource-tx-cdn.xiaoeeye.com/appmprxxtlw1092/file/b_u_clvs7frjop0v4ep5316g/n7st75lyfu1ug8.pdf?download_name=%E6%96%B0%E6%A6%82%E5%BF%B5%E8%8B%B1%E8%AF%AD3%20%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A00710.pdf" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-blue-600 hover:underline font-medium text-lg">
+                       新概念英语 3 课后练习0710.pdf
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 在线词典区域 -->
+        <section class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 border-b-2 border-gray-200 pb-3">📚 在线词典</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                在这里输入你想查询的单词或短语，然后选择一个词典进行查询。点击按钮后，将会在新标签页中打开对应的词典网站并显示查询结果。
+            </p>
+
+            <div class="space-y-6">
+                <!-- Linguee 词典 -->
+                <div class="dictionary-item bg-gray-100 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-medium text-gray-700 mb-3">Linguee 词典 (英汉双语例句)</h3>
+                    <p class="text-sm text-gray-600 mb-3">提供丰富的英汉例句，帮助你理解单词在实际语境中的用法。</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="lingueeInput" class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" placeholder="输入单词或短语...">
+                        <button onclick="searchDictionary('linguee')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+                            查询 Linguee
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 牛津高阶学习词典 (Oxford Learner's Dictionaries) -->
+                <div class="dictionary-item bg-gray-100 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-medium text-gray-700 mb-3">牛津高阶学习词典 (Oxford Learner's Dictionaries)</h3>
+                    <p class="text-sm text-gray-600 mb-3">权威的英语学习词典，提供详细的释义、例句、发音和用法。</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="oxfordInput" class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800" placeholder="输入单词或短语...">
+                        <button onclick="searchDictionary('oxford')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75">
+                            查询 牛津
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 朗文当代英语词典 (Longman Dictionary of Contemporary English) -->
+                <div class="dictionary-item bg-gray-100 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-medium text-gray-700 mb-3">朗文当代英语词典 (Longman Dictionary of Contemporary English)</h3>
+                    <p class="text-sm text-gray-600 mb-3">专注于口语和书面语的常用词汇，提供大量例句和搭配。</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="longmanInput" class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-800" placeholder="输入单词或短语...">
+                        <button onclick="searchDictionary('longman')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75">
+                            查询 朗文
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 网站底部 -->
+    <footer class="bg-gray-800 text-white text-center py-6 mt-8 rounded-t-xl">
+        <p>&copy; 2025 胶学. All rights reserved.</p>
+        <p class="text-sm mt-2">为学习而生，为知识传播而努力。</p>
+    </footer>
+
+    <script>
+        // 词典查询功能
+        function searchDictionary(type) {
+            let inputElement;
+            let baseUrl;
+
+            switch (type) {
+                case 'linguee':
+                    inputElement = document.getElementById('lingueeInput');
+                    baseUrl = 'https://www.linguee.com/english-chinese/search?source=auto&query=';
+                    break;
+                case 'oxford':
+                    inputElement = document.getElementById('oxfordInput');
+                    baseUrl = 'https://www.oxfordlearnersdictionaries.com/definition/english/';
+                    break;
+                case 'longman':
+                    inputElement = document.getElementById('longmanInput');
+                    baseUrl = 'https://www.ldoceonline.com/dictionary/';
+                    break;
+                default:
+                    return;
+            }
+
+            const searchTerm = inputElement.value.trim();
+            if (searchTerm) {
+                // 对搜索词进行编码，以处理特殊字符和空格
+                const encodedSearchTerm = encodeURIComponent(searchTerm);
+                window.open(baseUrl + encodedSearchTerm, '_blank');
+            } else {
+                // 如果输入为空，可以给出提示，或者直接打开词典首页
+                alert('请输入要查询的单词或短语！'); // 使用 alert 替代自定义消息框，因为这是简单的提示
+            }
+        }
+    </script>
+</body>
+</html>
